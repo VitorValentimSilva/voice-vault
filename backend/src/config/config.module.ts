@@ -5,6 +5,7 @@ import { LoggerModule } from 'nestjs-pino';
 
 import { EnvSchema } from '@/config/env/dto/env.dto';
 import { EnvModule } from '@/config/env/env.module';
+import { PrismaModule } from '@/config/prisma/prisma.module';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -45,6 +46,7 @@ const isProd = process.env.NODE_ENV === 'production';
     }),
     SentryModule.forRoot(),
     EnvModule,
+    PrismaModule,
   ],
 })
 export class AppConfigModule {}
