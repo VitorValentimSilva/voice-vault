@@ -5,7 +5,7 @@ import { getLoggerToken } from 'nestjs-pino';
 
 import { REDIS_CLIENT } from '@/config/redis/const/redis.const';
 import { RedisService } from '@/config/redis/redis.service';
-import { RedisCode } from '@/error/code/redis.code';
+import { ERROR_CODE } from '@/error/code/error.code';
 import { AppException } from '@/error/error.class';
 
 describe('RedisService', () => {
@@ -74,7 +74,7 @@ describe('RedisService', () => {
       await expect(rejectPromise).rejects.toThrow(AppException);
       await expect(rejectPromise).rejects.toHaveProperty(
         'code',
-        RedisCode.REDIS_INVALID_TTL_DURATION
+        ERROR_CODE.REDIS_INVALID_TTL_DURATION
       );
     });
 
@@ -84,7 +84,7 @@ describe('RedisService', () => {
       await expect(rejectPromise).rejects.toThrow(AppException);
       await expect(rejectPromise).rejects.toHaveProperty(
         'code',
-        RedisCode.REDIS_INVALID_TTL_DURATION
+        ERROR_CODE.REDIS_INVALID_TTL_DURATION
       );
     });
   });
@@ -142,7 +142,7 @@ describe('RedisService', () => {
       await expect(rejectPromise).rejects.toThrow(AppException);
       await expect(rejectPromise).rejects.toHaveProperty(
         'code',
-        RedisCode.REDIS_INVALID_SECONDS_DURATION
+        ERROR_CODE.REDIS_INVALID_SECONDS_DURATION
       );
     });
 
@@ -152,7 +152,7 @@ describe('RedisService', () => {
       await expect(rejectPromise).rejects.toThrow(AppException);
       await expect(rejectPromise).rejects.toHaveProperty(
         'code',
-        RedisCode.REDIS_INVALID_SECONDS_DURATION
+        ERROR_CODE.REDIS_INVALID_SECONDS_DURATION
       );
     });
   });

@@ -8,7 +8,7 @@ import { EnvModule } from '@/config/env/env.module';
 import { EnvService } from '@/config/env/env.service';
 import { REDIS_CLIENT } from '@/config/redis/const/redis.const';
 import { RedisService } from '@/config/redis/redis.service';
-import { RedisCode } from '@/error/code/redis.code';
+import { ERROR_CODE } from '@/error/code/error.code';
 
 describe('RedisService (Integration)', () => {
   let service: RedisService;
@@ -86,25 +86,25 @@ describe('RedisService (Integration)', () => {
 
   it('should throw AppException INVALID_INPUT when set is called with ttl zero', async () => {
     await expect(service.set('any-key', 'value', 0)).rejects.toMatchObject({
-      code: RedisCode.REDIS_INVALID_TTL_DURATION,
+      code: ERROR_CODE.REDIS_INVALID_TTL_DURATION,
     });
   });
 
   it('should throw AppException INVALID_INPUT when set is called with negative ttl', async () => {
     await expect(service.set('any-key', 'value', -1)).rejects.toMatchObject({
-      code: RedisCode.REDIS_INVALID_TTL_DURATION,
+      code: ERROR_CODE.REDIS_INVALID_TTL_DURATION,
     });
   });
 
   it('should throw AppException INVALID_INPUT when expire is called with seconds zero', async () => {
     await expect(service.expire('any-key', 0)).rejects.toMatchObject({
-      code: RedisCode.REDIS_INVALID_SECONDS_DURATION,
+      code: ERROR_CODE.REDIS_INVALID_SECONDS_DURATION,
     });
   });
 
   it('should throw AppException INVALID_INPUT when expire is called with negative seconds', async () => {
     await expect(service.expire('any-key', -30)).rejects.toMatchObject({
-      code: RedisCode.REDIS_INVALID_SECONDS_DURATION,
+      code: ERROR_CODE.REDIS_INVALID_SECONDS_DURATION,
     });
   });
 });
