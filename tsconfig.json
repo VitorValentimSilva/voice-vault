@@ -18,8 +18,8 @@
     "noFallthroughCasesInSwitch": false,
     "target": "ES2023",
     "paths": {
-      "@/error*": ["./shared/error/*"],
-      "@/enum*": ["./shared/enum/*"],
+      "@/error/*": ["./shared/error/*"],
+      "@/enum/*": ["./shared/enum/*"],
     }
   }
 }
