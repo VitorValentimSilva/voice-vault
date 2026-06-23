@@ -29,7 +29,9 @@
     "posthog-node": "^5.38.1",
     "joi": "^18.2.3",
     "pino-http": "^11.0.0",
-    "nestjs-pino": "^4.6.1"
+    "nestjs-pino": "^4.6.1",
+    "helmet": "^8.2.0",
+    "compression": "^1.8.1"
   },
   "devDependencies": {
     "typescript": "^6.0.3",
