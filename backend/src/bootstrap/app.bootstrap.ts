@@ -4,6 +4,7 @@ import { nodeProfilingIntegration } from '@sentry/profiling-node';
 import compression from 'compression';
 import helmet from 'helmet';
 import { Logger } from 'nestjs-pino';
+import { ZodValidationPipe } from 'nestjs-zod';
 
 import { setupPosthog } from '@/bootstrap/posthog.bootstrap';
 import { setupSwagger } from '@/bootstrap/swagger.bootstrap';
@@ -21,6 +22,8 @@ export async function bootstrap(): Promise<void> {
 
   app.use(helmet());
   app.use(compression());
+
+  app.useGlobalPipes(new ZodValidationPipe());
 
   const env = process.env;
 
