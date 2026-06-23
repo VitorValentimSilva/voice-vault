@@ -3,7 +3,7 @@ import { Redis } from '@upstash/redis';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 import { REDIS_CLIENT } from '@/config/redis/const/redis.const';
-import { RedisCode } from '@/error/code/redis.code';
+import { ERROR_CODE } from '@/error/code/error.code';
 import { AppException } from '@/error/error.class';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class RedisService {
 
   async set<T>(key: string, value: T, ttlSeconds?: number): Promise<void> {
     if (ttlSeconds !== undefined && ttlSeconds <= 0) {
-      throw new AppException(RedisCode.REDIS_INVALID_TTL_DURATION, {
+      throw new AppException(ERROR_CODE.REDIS_INVALID_TTL_DURATION, {
         context: {
           field: 'ttlSeconds',
           reason: 'must be greater than zero',
@@ -58,7 +58,7 @@ export class RedisService {
 
   async expire(key: string, seconds: number): Promise<number> {
     if (seconds <= 0) {
-      throw new AppException(RedisCode.REDIS_INVALID_SECONDS_DURATION, {
+      throw new AppException(ERROR_CODE.REDIS_INVALID_SECONDS_DURATION, {
         context: { field: 'seconds', reason: 'must be greater than zero', received: seconds },
       });
     }
