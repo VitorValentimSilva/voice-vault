@@ -26,7 +26,10 @@
     "swagger-ui-express": "^5.0.1",
     "pino": "^10.3.1",
     "reflect-metadata": "^0.2.2",
-    "posthog-node": "^5.38.1"
+    "posthog-node": "^5.38.1",
+    "joi": "^18.2.3",
+    "pino-http": "^11.0.0",
+    "nestjs-pino": "^4.6.1"
   },
   "devDependencies": {
     "typescript": "^6.0.3",
@@ -36,6 +39,7 @@
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "eslint-plugin-unused-imports": "^4.4.1",
+    "@eslint/eslintrc": "^3.3.5",
     "prettier": "^3.8.4",
     "@eslint/js": "^10.0.1",
     "globals": "^17.6.0",
@@ -50,6 +54,8 @@
     "prisma": "^7.8.0",
     "ts-jest": "^29.4.11",
     "@nestjs/cli": "^11.0.23",
+    "@nestjs/schematics": "^11.1.0",
+    "@nestjs/testing": "^11.1.27",
     "tsc-alias": "^1.8.17"
   },
   "lint-staged": {
