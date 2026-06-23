@@ -23,8 +23,9 @@
     "outDir": "./dist",
     "paths": {
       "@/*": ["./src/*"],
-      "@bootstrap/*": ["./src/bootstrap/*"],
-      "@config/*": ["./src/config/*"]
+      "@/bootstrap/*": ["./src/bootstrap/*"],
+      "@/config/*": ["./src/config/*"],
+      "@/enum/*": ["../shared/enum/*"],
     }
   },
   "include": ["../**/*.ts"]
