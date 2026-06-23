@@ -1,7 +1,7 @@
 import { HttpException } from '@nestjs/common';
 
-import { ErrorCode } from '@/errorcode/error.code';
-import { ERROR_METADATA } from '@/errorerror.const';
+import { ErrorCode } from '@/error/code/error.code';
+import { ERROR_METADATA } from '@/error/error.const';
 
 export class AppException extends HttpException {
   readonly code: ErrorCode;
