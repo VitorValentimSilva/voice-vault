@@ -1,3 +1,7 @@
-import { RedisCode } from '@/errorcode/redis.code';
+import { RedisCode } from '@/error/code/redis.code';
 
-export type ErrorCode = RedisCode;
+export const ERROR_CODE = {
+  ...RedisCode,
+} as const;
+
+export type ErrorCode = (typeof ERROR_CODE)[keyof typeof ERROR_CODE];
