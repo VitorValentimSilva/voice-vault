@@ -98,6 +98,7 @@
     "rootDir": "./src",
     "moduleNameMapper": {
       "^@/enum/(.*)$": "<rootDir>/../../shared/enum/$1",
+      "^@/error/(.*)$": "<rootDir>/../../shared/error/$1",
       "^@/(.*)$": "<rootDir>/$1"
     },
     "testRegex": ".*\\.spec\\.ts$",

@@ -1,12 +1,14 @@
 {
   "moduleFileExtensions": ["js", "json", "ts"],
-  "rootDir": "../..",
+  "rootDir": "../../",
   "testEnvironment": "node",
   "testRegex": "test/e2e/.*\\.e2e-spec\\.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
+    "^@/enum/(.*)$": "<rootDir>/../shared/enum/$1",
+    "^@/error/(.*)$": "<rootDir>/../shared/error/$1",
     "^@/(.*)$": "<rootDir>/src/$1"
   }
 }
