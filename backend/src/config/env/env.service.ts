@@ -59,4 +59,16 @@ export class EnvService {
       infer: true,
     });
   }
+
+  get upstashRedisUrl() {
+    return this.configService.get('UPSTASH_REDIS_REST_URL', {
+      infer: true,
+    });
+  }
+
+  get upstashRedisToken() {
+    return this.configService.get('UPSTASH_REDIS_REST_TOKEN', {
+      infer: true,
+    });
+  }
 }

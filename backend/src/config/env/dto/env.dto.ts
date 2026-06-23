@@ -10,6 +10,8 @@ export interface Env {
   CLERK_WEBHOOK_SECRET: string;
   POSTHOG_KEY: string;
   POSTHOG_HOST: string;
+  UPSTASH_REDIS_REST_URL: string;
+  UPSTASH_REDIS_REST_TOKEN: string;
 }
 
 export const EnvSchema = Joi.object({
@@ -24,4 +26,6 @@ export const EnvSchema = Joi.object({
   CLERK_WEBHOOK_SECRET: Joi.string().required(),
   POSTHOG_KEY: Joi.string().required(),
   POSTHOG_HOST: Joi.string().uri().required(),
+  UPSTASH_REDIS_REST_URL: Joi.string().uri().required(),
+  UPSTASH_REDIS_REST_TOKEN: Joi.string().required(),
 });
