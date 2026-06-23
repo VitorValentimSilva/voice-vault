@@ -36,7 +36,8 @@
     "tsc-alias": "^1.8.17",
     "tsconfig-paths": "^4.2.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.7"
+    "lint-staged": "^17.0.7",
+    "globals": "^17.6.0"
   },
   "lint-staged": {
     "*.{ts,js}": [
