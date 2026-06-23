@@ -6,4 +6,6 @@ export const ERROR_CODE = {
   ...RATE_LIMIT_CODE,
 } as const;
 
-export type ErrorCode = (typeof ERROR_CODE)[keyof typeof ERROR_CODE];
+export type ErrorCode =
+  | (typeof RATE_LIMIT_CODE)[keyof typeof RATE_LIMIT_CODE]
+  | (typeof REDIS_CODE)[keyof typeof REDIS_CODE];
