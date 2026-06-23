@@ -25,7 +25,8 @@
       "@/*": ["./src/*"],
       "@/bootstrap/*": ["./src/bootstrap/*"],
       "@/config/*": ["./src/config/*"],
-      "@/enum/*": ["../shared/enum/*"]
+      "@/enum/*": ["../shared/enum/*"],
+      "@/error/*": ["../shared/error/*"],
     }
   },
   "include": ["../**/*.ts"]
