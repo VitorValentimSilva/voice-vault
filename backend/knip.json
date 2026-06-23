@@ -1,4 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip/schema.json",
-  "ignore": ["./node_modules"]
+  "entry": ["./src/main.ts"],
+  "project": ["./src/**/*.{ts,tsx}"],
+  "ignore": ["./node_modules", "./dist"]
 }
