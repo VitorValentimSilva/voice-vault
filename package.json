@@ -16,18 +16,18 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@nestjs/common": "^11.1.27",
     "zod": "^4.4.3",
-    "nestjs-zod": "^5.4.0",
-    "@nestjs/common": "^11.1.27"
+    "nestjs-zod": "^5.4.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint": "^10.5.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "eslint-plugin-unused-imports": "^4.4.1",
-    "@eslint/eslintrc": "^3.3.5",
     "eslint-plugin-prettier": "^5.5.6",
-    "@eslint/js": "^10.0.1",
     "prettier": "^3.8.4",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.1",
