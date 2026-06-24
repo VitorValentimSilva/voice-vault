@@ -28,6 +28,7 @@
       "@/enum/*": ["../shared/enum/*"],
       "@/error/*": ["../shared/error/*"],
       "@/const/*": ["../shared/const/*"],
+      "@/dto/*": ["../shared/dto/*"]
     }
   },
   "include": ["../**/*.ts"]
