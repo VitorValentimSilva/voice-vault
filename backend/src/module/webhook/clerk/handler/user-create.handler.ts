@@ -7,17 +7,18 @@ import { PrismaService } from '@/config/prisma/prisma.service';
 import { ClerkUserDto } from '@/dto/clerk/clerk.dto';
 import { ERROR_CODE } from '@/error/code/error.code';
 import { AppException } from '@/error/error.class';
+import { ClerkUtil } from '@/module/webhook/clerk/clerk.util';
 
 @Injectable()
-export class UserCreatedHandler {
+export class UserCreateHandler {
   constructor(
-    @InjectPinoLogger(UserCreatedHandler.name)
+    @InjectPinoLogger(UserCreateHandler.name)
     private readonly logger: PinoLogger,
     private readonly prisma: PrismaService
   ) {}
 
   async handle(data: ClerkUserDto): Promise<void> {
-    const email = this.resolvePrimaryEmail(data);
+    const email = ClerkUtil.resolvePrimaryEmail(data);
 
     if (!email) {
       this.logger.warn({ clerkUserId: data.id }, 'user.create without primary email — ignored');
@@ -25,8 +26,8 @@ export class UserCreatedHandler {
       return;
     }
 
-    const name = this.resolveFullName(data);
-    const currentProvider = this.resolveProvider(data);
+    const name = ClerkUtil.resolveFullName(data);
+    const currentProvider = ClerkUtil.resolveProvider(data);
 
     const upsert = fromAsyncThrowable(
       () =>
@@ -77,25 +78,5 @@ export class UserCreatedHandler {
         throw error;
       }
     );
-  }
-
-  private resolvePrimaryEmail(data: ClerkUserDto): string | null {
-    if (!data.primary_email_address_id) {
-      return null;
-    }
-
-    const primary = data.email_addresses.find((e) => e.id === data.primary_email_address_id);
-
-    return primary?.email_address ?? null;
-  }
-
-  private resolveFullName(data: ClerkUserDto): string | null {
-    const parts = [data.first_name, data.last_name].filter(Boolean);
-
-    return parts.length > 0 ? parts.join(' ') : null;
-  }
-
-  private resolveProvider(data: ClerkUserDto): string | null {
-    return data.external_accounts?.[0]?.provider ?? null;
   }
 }
