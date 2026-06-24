@@ -9,6 +9,7 @@
   "moduleNameMapper": {
     "^@/enum/(.*)$": "<rootDir>/../shared/enum/$1",
     "^@/error/(.*)$": "<rootDir>/../shared/error/$1",
+    "^@/const/(.*)$": "<rootDir>/../shared/const/$1",
     "^@/(.*)$": "<rootDir>/src/$1"
   }
 }
