@@ -1,0 +1,3 @@
+export const COMMON_CODE = {
+  COMMON_INTERNAL_ERROR: 'COMMON_INTERNAL_ERROR',
+} as const;

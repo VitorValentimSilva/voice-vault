@@ -7,4 +7,5 @@ export const ERROR_METADATA: Record<ErrorCode, { status: number; severity: Error
   RATE_LIMIT_INVALID_IDENTIFIER_CONTENT: { status: 400, severity: ErrorSeverity.LOW },
   RATE_LIMIT_INVALID_CONTEXT: { status: 400, severity: ErrorSeverity.LOW },
   RATE_LIMIT_EXECUTION_FAILED: { status: 500, severity: ErrorSeverity.HIGH },
+  COMMON_INTERNAL_ERROR: { status: 500, severity: ErrorSeverity.HIGH },
 };
