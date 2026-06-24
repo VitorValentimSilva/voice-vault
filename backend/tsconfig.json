@@ -25,6 +25,7 @@
       "@/*": ["./src/*"],
       "@/bootstrap/*": ["./src/bootstrap/*"],
       "@/config/*": ["./src/config/*"],
+      "@/module/*": ["./src/module/*"],
       "@/enum/*": ["../shared/enum/*"],
       "@/error/*": ["../shared/error/*"],
       "@/const/*": ["../shared/const/*"],

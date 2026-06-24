@@ -21,6 +21,7 @@
       "@/*": ["./backend/src/*"],
       "@/bootstrap/*": ["./backend/src/bootstrap/*"],
       "@/config/*": ["./backend/src/config/*"],
+      "@/module/*": ["./backend/src/module/*"],
       "@/enum/*": ["./shared/enum/*"],
       "@/error/*": ["./shared/error/*"],
       "@/const/*": ["./shared/const/*"],
