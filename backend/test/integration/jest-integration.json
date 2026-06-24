@@ -7,12 +7,12 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
-    "^@/(.*)$": "<rootDir>/src/$1",
-    "^@/bootstrap/(.*)$": "<rootDir>/src/bootstrap/$1",
-    "^@/config/(.*)$": "<rootDir>/src/config/$1",
     "^@/enum/(.*)$": "<rootDir>/../shared/enum/$1",
     "^@/error/(.*)$": "<rootDir>/../shared/error/$1",
     "^@/const/(.*)$": "<rootDir>/../shared/const/$1",
-    "^@/dto/(.*)$": "<rootDir>/../shared/dto/$1"
+    "^@/dto/(.*)$": "<rootDir>/../shared/dto/$1",
+    "^@/bootstrap/(.*)$": "<rootDir>/src/bootstrap/$1",
+    "^@/config/(.*)$": "<rootDir>/src/config/$1",
+    "^@/(.*)$": "<rootDir>/src/$1"
   }
 }
