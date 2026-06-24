@@ -5,15 +5,15 @@ import { Redis } from '@upstash/redis';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import { err, ok, Result } from 'neverthrow';
 
-import { RATE_LIMIT_CONFIGS } from '@/const/rate-limit.const';
+import { RATE_LIMIT_CONFIG, RateLimitConfig } from '@/const/rate-limit.const';
 import { REDIS_CLIENT } from '@/const/redis.const';
-import { RateLimitContext, RateLimitResultDto } from '@/dto/rate-limit.dto';
+import { RateLimitResultDto } from '@/dto/rate-limit.dto';
 import { ERROR_CODE } from '@/error/code/error.code';
 import { AppException } from '@/error/error.class';
 
 @Injectable()
 export class RateLimitService {
-  private readonly limiters = new Map<RateLimitContext, Ratelimit>();
+  private readonly limiters = new Map<RateLimitConfig, Ratelimit>();
 
   constructor(
     @Inject(REDIS_CLIENT)
@@ -22,9 +22,9 @@ export class RateLimitService {
     @InjectPinoLogger(RateLimitService.name)
     private readonly logger: PinoLogger
   ) {
-    for (const [context, config] of Object.entries(RATE_LIMIT_CONFIGS) as [
-      RateLimitContext,
-      (typeof RATE_LIMIT_CONFIGS)[RateLimitContext],
+    for (const [context, config] of Object.entries(RATE_LIMIT_CONFIG) as [
+      RateLimitConfig,
+      (typeof RATE_LIMIT_CONFIG)[RateLimitConfig],
     ][]) {
       this.limiters.set(
         context,
@@ -41,7 +41,7 @@ export class RateLimitService {
   }
 
   async limit(
-    context: RateLimitContext,
+    context: RateLimitConfig,
     identifier: string
   ): Promise<Result<RateLimitResultDto, AppException>> {
     if (!identifier.trim()) {
