@@ -20,6 +20,7 @@
     "paths": {
       "@/error/*": ["./shared/error/*"],
       "@/enum/*": ["./shared/enum/*"],
+      "@/const/*": ["./shared/const/*"],
       "@/config/*": ["./backend/src/config/*"],
       "@/bootstrap/*": ["./backend/src/bootstrap/*"],
       "@/*": ["./backend/src/*"]
