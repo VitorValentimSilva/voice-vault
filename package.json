@@ -32,7 +32,7 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.0",
     "ts-node": "^10.9.2",
-    "knip": "^6.18.0",
+    "knip": "^6.20.0",
     "tsc-alias": "^1.8.17",
     "tsconfig-paths": "^4.2.0",
     "husky": "^9.1.7",
