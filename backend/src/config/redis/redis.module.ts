@@ -2,8 +2,8 @@ import { Global, Module } from '@nestjs/common';
 import { Redis } from '@upstash/redis';
 
 import { EnvService } from '@/config/env/env.service';
-import { REDIS_CLIENT } from '@/config/redis/const/redis.const';
 import { RedisService } from '@/config/redis/redis.service';
+import { REDIS_CLIENT } from '@/const/redis.const';
 
 @Global()
 @Module({
