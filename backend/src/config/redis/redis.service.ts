@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Redis } from '@upstash/redis';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
-import { REDIS_CLIENT } from '@/config/redis/const/redis.const';
+import { REDIS_CLIENT } from '@/const/redis.const';
 import { ERROR_CODE } from '@/error/code/error.code';
 import { AppException } from '@/error/error.class';
 

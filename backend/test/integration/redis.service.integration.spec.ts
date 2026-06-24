@@ -6,8 +6,8 @@ import { getLoggerToken } from 'nestjs-pino';
 
 import { EnvModule } from '@/config/env/env.module';
 import { EnvService } from '@/config/env/env.service';
-import { REDIS_CLIENT } from '@/config/redis/const/redis.const';
 import { RedisService } from '@/config/redis/redis.service';
+import { REDIS_CLIENT } from '@/const/redis.const';
 import { ERROR_CODE } from '@/error/code/error.code';
 
 describe('RedisService (Integration)', () => {
