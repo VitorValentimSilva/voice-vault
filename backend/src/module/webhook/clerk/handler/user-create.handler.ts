@@ -5,8 +5,8 @@ import { fromAsyncThrowable, Result } from 'neverthrow';
 
 import { PrismaService } from '@/config/prisma/prisma.service';
 import { ClerkUserDto } from '@/dto/clerk/clerk.dto';
+import { AppException } from '@/error/class/app-exception.class';
 import { ERROR_CODE } from '@/error/code/error.code';
-import { AppException } from '@/error/error.class';
 import { ClerkUtil } from '@/module/webhook/clerk/clerk.util';
 
 @Injectable()

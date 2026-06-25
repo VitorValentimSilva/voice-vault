@@ -8,8 +8,8 @@ import { err, ok, Result } from 'neverthrow';
 import { RATE_LIMIT_CONFIG, RateLimitConfig } from '@/const/rate-limit.const';
 import { REDIS_CLIENT } from '@/const/redis.const';
 import { RateLimitResultDto } from '@/dto/rate-limit.dto';
+import { AppException } from '@/error/class/app-exception.class';
 import { ERROR_CODE } from '@/error/code/error.code';
-import { AppException } from '@/error/error.class';
 
 @Injectable()
 export class RateLimitService {

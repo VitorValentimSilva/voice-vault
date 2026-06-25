@@ -5,8 +5,8 @@ import { getLoggerToken } from 'nestjs-pino';
 
 import { RedisService } from '@/config/redis/redis.service';
 import { REDIS_CLIENT } from '@/const/redis.const';
+import { AppException } from '@/error/class/app-exception.class';
 import { ERROR_CODE } from '@/error/code/error.code';
-import { AppException } from '@/error/error.class';
 
 describe('RedisService', () => {
   let service: RedisService;

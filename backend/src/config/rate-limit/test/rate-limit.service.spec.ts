@@ -5,8 +5,8 @@ import { getLoggerToken } from 'nestjs-pino';
 import { RateLimitService } from '@/config/rate-limit/rate-limit.service';
 import { REDIS_CLIENT } from '@/const/redis.const';
 import { RateLimitResultDto } from '@/dto/rate-limit.dto';
+import { AppException } from '@/error/class/app-exception.class';
 import { ERROR_CODE } from '@/error/code/error.code';
-import { AppException } from '@/error/error.class';
 
 const mockLimit = jest.fn<(identifier: string) => Promise<RateLimitResultDto>>();
 

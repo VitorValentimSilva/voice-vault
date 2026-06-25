@@ -3,8 +3,8 @@ import { Redis } from '@upstash/redis';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 import { REDIS_CLIENT } from '@/const/redis.const';
+import { AppException } from '@/error/class/app-exception.class';
 import { ERROR_CODE } from '@/error/code/error.code';
-import { AppException } from '@/error/error.class';
 
 @Injectable()
 export class RedisService {
