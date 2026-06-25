@@ -1,6 +1,8 @@
+import { RawBodyRequest } from '@nestjs/common';
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
 
+import { CLERK_VERIFIED_EVENT_KEY } from '@/const/clerk.const';
 import { ClerkUserDeleteEventSchema } from '@/dto/clerk/clerk-delete.dto';
 import { ClerkUserUpdateEventSchema } from '@/dto/clerk/clerk-update.dto';
 
@@ -91,3 +93,7 @@ export const ClerkEventSchema = z.discriminatedUnion('type', [
 ]);
 
 export type ClerkEventDto = z.infer<typeof ClerkEventSchema>;
+
+export type WebhookRequest = RawBodyRequest<Request> & {
+  [CLERK_VERIFIED_EVENT_KEY]?: ClerkEventDto;
+};
