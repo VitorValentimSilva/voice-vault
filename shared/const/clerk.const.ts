@@ -6,4 +6,4 @@ export const CLERK_EVENT = {
 
 export const CLERK_ROUTE = 'clerk';
 
-export const CLERK_VERIFIED_EVENT_KEY = 'clerk_verified_event';
+export const CLERK_VERIFIED_EVENT_KEY = 'clerk_verified_event' as const;

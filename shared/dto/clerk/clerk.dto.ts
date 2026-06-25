@@ -84,10 +84,10 @@ export const ClerkUserCreateEventSchema = z.object({
   timestamp: z.number(),
 });
 
-export const ClerkWebhookEventSchema = z.discriminatedUnion('type', [
+export const ClerkEventSchema = z.discriminatedUnion('type', [
   ClerkUserCreateEventSchema,
   ClerkUserUpdateEventSchema,
   ClerkUserDeleteEventSchema,
 ]);
 
-export type ClerkWebhookEventDto = z.infer<typeof ClerkWebhookEventSchema>;
+export type ClerkEventDto = z.infer<typeof ClerkEventSchema>;

@@ -6,7 +6,7 @@ import { Webhook, WebhookRequiredHeaders } from 'svix';
 import { EnvService } from '@/config/env/env.service';
 import { RateLimitService } from '@/config/rate-limit/rate-limit.service';
 import { CLERK_VERIFIED_EVENT_KEY } from '@/const/clerk.const';
-import { ClerkWebhookEventSchema } from '@/dto/clerk/clerk.dto';
+import { ClerkEventSchema } from '@/dto/clerk/clerk.dto';
 import { AppException } from '@/error/class/app-exception.class';
 import { ERROR_CODE } from '@/error/code/error.code';
 import { ClerkUtil } from '@/module/webhook/clerk/clerk.util';
@@ -114,7 +114,7 @@ export class ClerkGuard implements CanActivate {
       });
     }
 
-    const parsed = ClerkWebhookEventSchema.safeParse(rawVerified);
+    const parsed = ClerkEventSchema.safeParse(rawVerified);
 
     if (!parsed.success) {
       const issues = parsed.error.issues;
