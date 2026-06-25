@@ -8,6 +8,7 @@ import { EnvModule } from '@/config/env/env.module';
 import { PrismaModule } from '@/config/prisma/prisma.module';
 import { RateLimitModule } from '@/config/rate-limit/rate-limit.module';
 import { RedisModule } from '@/config/redis/redis.module';
+import { ClerkModule } from '@/module/webhook/clerk/clerk.module';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -51,6 +52,7 @@ const isProd = process.env.NODE_ENV === 'production';
     PrismaModule,
     RedisModule,
     RateLimitModule,
+    ClerkModule,
   ],
 })
 export class AppConfigModule {}
