@@ -9,3 +9,10 @@ export const ClerkUserDeleteSchema = z.object({
 });
 
 export class ClerkUserDeleteDto extends createZodDto(ClerkUserDeleteSchema) {}
+
+export const ClerkUserDeleteEventSchema = z.object({
+  type: z.literal('user.deleted'),
+  data: ClerkUserDeleteSchema,
+  object: z.literal('event'),
+  timestamp: z.number(),
+});

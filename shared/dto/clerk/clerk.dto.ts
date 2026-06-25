@@ -1,6 +1,9 @@
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
 
+import { ClerkUserDeleteEventSchema } from '@/dto/clerk/clerk-delete.dto';
+import { ClerkUserUpdateEventSchema } from '@/dto/clerk/clerk-update.dto';
+
 export const ClerkEmailAddressSchema = z.object({
   id: z.string(),
   email_address: z.email(),
@@ -73,3 +76,18 @@ export const ClerkUserSchema = z.object({
 });
 
 export class ClerkUserDto extends createZodDto(ClerkUserSchema) {}
+
+export const ClerkUserCreateEventSchema = z.object({
+  type: z.literal('user.created'),
+  data: ClerkUserSchema,
+  object: z.literal('event'),
+  timestamp: z.number(),
+});
+
+export const ClerkWebhookEventSchema = z.discriminatedUnion('type', [
+  ClerkUserCreateEventSchema,
+  ClerkUserUpdateEventSchema,
+  ClerkUserDeleteEventSchema,
+]);
+
+export type ClerkWebhookEventDto = z.infer<typeof ClerkWebhookEventSchema>;
