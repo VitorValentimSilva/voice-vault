@@ -11,3 +11,7 @@ export const ERROR_CODE: Record<string, string> = {
 } as const;
 
 export type ErrorCode = keyof typeof ERROR_CODE;
+
+export interface ErrorResponse {
+  error: ErrorCode;
+}
