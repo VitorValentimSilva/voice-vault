@@ -16,4 +16,10 @@ export const ERROR_METADATA: Record<ErrorCode, { status: number; severity: Error
 
   // * ZOD:
   ZOD_ERROR_NOT_FOUND: { status: 404, severity: ErrorSeverity.LOW },
+
+  // * CLERK:
+  CLERK_WEBHOOK_MISSING_RAW_BODY: { status: 400, severity: ErrorSeverity.LOW },
+  CLERK_WEBHOOK_MISSING_SVIX_HEADERS: { status: 400, severity: ErrorSeverity.LOW },
+  CLERK_WEBHOOK_INVALID_SIGNATURE: { status: 400, severity: ErrorSeverity.LOW },
+  CLERK_WEBHOOK_INVALID_PAYLOAD: { status: 400, severity: ErrorSeverity.LOW },
 };
