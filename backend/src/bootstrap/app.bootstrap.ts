@@ -43,7 +43,7 @@ export async function bootstrap(): Promise<void> {
   setupPosthog(app);
   setupSwagger(app);
 
-  const port = env.PORT ?? 5000;
+  const port = Number(env.PORT ?? 3000);
 
   await app.listen(port);
 

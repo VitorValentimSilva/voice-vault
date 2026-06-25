@@ -2,4 +2,7 @@ import 'reflect-metadata';
 
 import { bootstrap } from '@/bootstrap/app.bootstrap';
 
-void bootstrap();
+bootstrap().catch((error: unknown) => {
+  console.error(error);
+  process.exit(1);
+});

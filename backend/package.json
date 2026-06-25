@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Vitor Valentim da Silva Ferreira",
   "scripts": {
-    "start:dev": "nest start --debug --watch --sourceRoot . --entryFile backend/src/main",
+    "start:dev": "nest start --watch --sourceRoot . --entryFile backend/src/main",
     "build": "nest build && tsc-alias -p tsconfig.build.json",
     "format": "prettier --write .",
     "format:check": "prettier . --check",
