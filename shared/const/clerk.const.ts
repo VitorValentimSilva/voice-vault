@@ -1,9 +1,9 @@
-export const CLERK_WEBHOOK_EVENT = {
+export const CLERK_EVENT = {
   USER_CREATED: 'user.created',
   USER_UPDATED: 'user.updated',
   USER_DELETED: 'user.deleted',
 } as const;
 
-export const CLERK_WEBHOOK_ROUTE = 'webhooks/clerk';
+export const CLERK_ROUTE = 'clerk';
 
 export const CLERK_VERIFIED_EVENT_KEY = 'clerk_verified_event';
