@@ -1,23 +1,31 @@
-import { ClerkUserDto } from '@/dto/clerk/clerk.dto';
+import type { ClerkUserPayload } from '@/dto/clerk/clerk-user.dto';
 
 export class ClerkUtil {
-  public static resolvePrimaryEmail(data: ClerkUserDto): string | null {
+  public static resolvePrimaryEmail(data: {
+    primary_email_address_id?: string | null;
+    email_addresses?: ClerkUserPayload['email_addresses'];
+  }): string | null {
     if (!data.primary_email_address_id) {
       return null;
     }
 
-    const primary = data.email_addresses.find((e) => e.id === data.primary_email_address_id);
+    const primary = data.email_addresses?.find((e) => e.id === data.primary_email_address_id);
 
     return primary?.email_address ?? null;
   }
 
-  public static resolveFullName(data: ClerkUserDto): string | null {
+  public static resolveFullName(data: {
+    first_name?: string | null;
+    last_name?: string | null;
+  }): string | null {
     const parts = [data.first_name, data.last_name].filter(Boolean);
 
     return parts.length > 0 ? parts.join(' ') : null;
   }
 
-  public static resolveProvider(data: ClerkUserDto): string | null {
+  public static resolveProvider(data: {
+    external_accounts?: ClerkUserPayload['external_accounts'];
+  }): string | null {
     return data.external_accounts?.[0]?.provider ?? null;
   }
 

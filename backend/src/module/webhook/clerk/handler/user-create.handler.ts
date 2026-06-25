@@ -4,7 +4,7 @@ import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import { fromAsyncThrowable, Result } from 'neverthrow';
 
 import { PrismaService } from '@/config/prisma/prisma.service';
-import { ClerkUserDto } from '@/dto/clerk/clerk.dto';
+import { ClerkUserDto } from '@/dto/clerk/clerk-user.dto';
 import { AppException } from '@/error/class/app-exception.class';
 import { ERROR_CODE } from '@/error/code/error.code';
 import { ClerkUtil } from '@/module/webhook/clerk/clerk.util';
