@@ -19,6 +19,7 @@
     "@clerk/expo": "^3.4.3",
     "@expo/ui": "^56.0.18",
     "@sentry/react-native": "^7.11.0",
+    "@rn-primitives/slot": "^1.4.0",
     "expo": "^56.0.12",
     "expo-font": "^56.0.7",
     "expo-notifications": "^56.0.18",
@@ -35,7 +36,9 @@
     "i18next": "^26.3.1",
     "lucide-react-native": "^1.17.0",
     "nativewind": "^4.2.5",
-    "uuid": "^14.0.0"
+    "uuid": "^14.0.0",
+    "clsx": "^2.1.1",
+    "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {
     "@types/node": "^26.0.1",
