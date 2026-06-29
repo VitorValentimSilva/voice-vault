@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    --background: 252 100% 98%;
+    --foreground: 252 34% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 252 34% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 252 34% 13%;
+
+    --primary: 256 72% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 252 100% 95%;
+    --secondary-foreground: 252 34% 13%;
+
+    --muted: 252 100% 96%;
+    --muted-foreground: 252 15% 44%;
+
+    --accent: 173 100% 24%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 252 35% 89%;
+    --input: 252 35% 89%;
+    --ring: 256 72% 56%;
+
+    --radius: 0.875rem;
+
+    --background-deep: 252 100% 96%;
+    --surface-elevated: 0 0% 100%;
+    --surface-hover: 252 100% 97%;
+    --tab-bar: 0 0% 100%;
+
+    --input-bg: 252 100% 99%;
+    --input-placeholder: 252 12% 54%;
+    --input-focus-border: 256 72% 56%;
+
+    --success: 142 76% 30%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 33%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 196 85% 35%;
+    --info-foreground: 0 0% 100%;
+
+    --icon-default: 252 10% 54%;
+    --icon-active: 256 72% 56%;
+
+    --recording: 0 72% 51%;
+    --recording-bg: 0 72% 51%;
+
+    --waveform-bar: 256 72% 56%;
+    --waveform-bar-active: 173 100% 24%;
+    --waveform-track: 252 100% 94%;
+
+    --progress-track: 252 30% 90%;
+    --progress-fill: 256 72% 56%;
+    --progress-warn: 38 92% 33%;
+    --progress-critical: 0 72% 51%;
+
+    --skeleton-base: 252 100% 96%;
+    --skeleton-shimmer: 252 30% 90%;
+
+    --overlay: 252 34% 13% / 0.72;
+
+    --avatar-bg: 252 100% 96%;
+    --avatar-text: 256 72% 42%;
+    --avatar-online: 142 76% 30%;
+
+    --plan-pro: 35 95% 33%;
+    --plan-pro-soft-bg: 35 95% 33% / 0.12;
+    --plan-free: 256 72% 56%;
+    --plan-free-soft-bg: 256 72% 56% / 0.12;
+
+    --transcript-text: 252 34% 13%;
+    --transcript-timestamp: 252 15% 44%;
+    --transcript-highlight: 256 72% 56%;
+    --transcript-speaker: 252 100% 95%;
+    --transcript-speaker-text: 256 72% 42%;
+
+    --chart-1: 256 72% 56%;
+    --chart-2: 173 100% 24%;
+    --chart-3: 142 76% 30%;
+    --chart-4: 38 92% 33%;
+    --chart-5: 0 72% 51%;
+
+    --shadow-soft: 0 12px 30px rgba(31, 24, 63, 0.06);
+    --shadow-glow: 0 0 0 1px rgba(107, 63, 224, 0.08), 0 12px 30px rgba(107, 63, 224, 0.12);
+  }
+
+  .dark:root {
+    color-scheme: dark;
+
+    --background: 251 44% 7%;
+    --foreground: 252 100% 96%;
+
+    --card: 251 38% 11%;
+    --card-foreground: 252 100% 96%;
+
+    --popover: 251 38% 11%;
+    --popover-foreground: 252 100% 96%;
+
+    --primary: 253 90% 70%;
+    --primary-foreground: 251 44% 7%;
+
+    --secondary: 255 35% 16%;
+    --secondary-foreground: 252 100% 96%;
+
+    --muted: 255 35% 16%;
+    --muted-foreground: 260 30% 60%;
+
+    --accent: 173 100% 35%;
+    --accent-foreground: 251 44% 7%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 255 28% 21%;
+    --input: 255 28% 21%;
+    --ring: 253 90% 70%;
+
+    --radius: 0.875rem;
+
+    --background-deep: 251 44% 5%;
+    --surface-elevated: 251 38% 11%;
+    --surface-hover: 255 35% 16%;
+    --tab-bar: 251 38% 11%;
+
+    --input-bg: 251 38% 11%;
+    --input-placeholder: 260 22% 51%;
+    --input-focus-border: 253 90% 70%;
+
+    --success: 142 76% 30%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 33%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 196 85% 35%;
+    --info-foreground: 0 0% 100%;
+
+    --icon-default: 260 22% 51%;
+    --icon-active: 253 90% 70%;
+
+    --recording: 0 84% 50%;
+    --recording-bg: 0 84% 50%;
+
+    --waveform-bar: 253 90% 70%;
+    --waveform-bar-active: 173 100% 35%;
+    --waveform-track: 255 35% 16%;
+
+    --progress-track: 255 35% 16%;
+    --progress-fill: 253 90% 70%;
+    --progress-warn: 38 92% 33%;
+    --progress-critical: 0 84% 50%;
+
+    --skeleton-base: 255 35% 16%;
+    --skeleton-shimmer: 255 28% 21%;
+
+    --overlay: 252 34% 5% / 0.72;
+
+    --avatar-bg: 255 28% 21%;
+    --avatar-text: 253 90% 72%;
+    --avatar-online: 142 76% 30%;
+
+    --plan-pro: 35 95% 33%;
+    --plan-pro-soft-bg: 35 95% 33% / 0.16;
+    --plan-free: 253 90% 70%;
+    --plan-free-soft-bg: 253 90% 70% / 0.16;
+
+    --transcript-text: 252 100% 96%;
+    --transcript-timestamp: 260 30% 60%;
+    --transcript-highlight: 253 90% 70%;
+    --transcript-speaker: 255 35% 16%;
+    --transcript-speaker-text: 253 90% 72%;
+
+    --chart-1: 253 90% 70%;
+    --chart-2: 173 100% 35%;
+    --chart-3: 142 76% 30%;
+    --chart-4: 38 92% 33%;
+    --chart-5: 0 84% 50%;
+
+    --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.24);
+    --shadow-glow: 0 0 0 1px rgba(124, 90, 246, 0.12), 0 12px 30px rgba(124, 90, 246, 0.16);
+  }
+}
