@@ -8,8 +8,9 @@
     "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./src/*"],
+      "@/asset/*": ["./asset/*"],
       "@/app/*": ["./src/app/*"],
-      "@/components/*": ["./src/components/*"],
+      "@/component/*": ["./src/component/*"],
       "@/lib/*": ["./src/lib/*"]
     }
   },
