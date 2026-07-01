@@ -11,7 +11,8 @@
       "@/asset/*": ["./asset/*"],
       "@/app/*": ["./src/app/*"],
       "@/component/*": ["./src/component/*"],
-      "@/lib/*": ["./src/lib/*"]
+      "@/lib/*": ["./src/lib/*"],
+      "@/const/*": ["../shared/const/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts", "nativewind-env.d.ts"]
