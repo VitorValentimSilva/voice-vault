@@ -1,0 +1,84 @@
+{
+  "expo": {
+    "name": "voice-vault",
+    "slug": "voice-vault",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "",
+    "scheme": "voice-vault",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["assets/**/*"],
+    "ios": {
+      "icon": "",
+      "bundleIdentifier": "com.vitorvalem.voicevault",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.vitorvalem.voicevault",
+      "icon": "",
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": ""
+    },
+    "plugins": [
+      "@clerk/expo",
+      "expo-web-browser",
+      "expo-router",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "react-native",
+          "organization": "vitorvalem"
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/plus_jakarta_sans_extra_light.ttf",
+            "./assets/fonts/plus_jakarta_sans_extra_light_italic.ttf",
+            "./assets/fonts/plus_jakarta_sans_light.ttf",
+            "./assets/fonts/plus_jakarta_sans_light_italic.ttf",
+            "./assets/fonts/plus_jakarta_sans_regular.ttf",
+            "./assets/fonts/plus_jakarta_sans_italic.ttf",
+            "./assets/fonts/plus_jakarta_sans_medium.ttf",
+            "./assets/fonts/plus_jakarta_sans_medium_italic.ttf",
+            "./assets/fonts/plus_jakarta_sans_semi_bold.ttf",
+            "./assets/fonts/plus_jakarta_sans_semi_bold_italic.ttf",
+            "./assets/fonts/plus_jakarta_sans_bold.ttf",
+            "./assets/fonts/plus_jakarta_sans_bold_italic.ttf",
+            "./assets/fonts/plus_jakarta_sans_extra_bold.ttf",
+            "./assets/fonts/plus_jakarta_sans_extra_bold_italic.ttf",
+            "./assets/fonts/plus_jakarta_sans_black.ttf",
+            "./assets/fonts/plus_jakarta_sans_black_italic.ttf"
+          ]
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "fd37b3d6-2cd9-47b0-81da-4567dfa910c5"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 3000
+    }
+  }
+}
