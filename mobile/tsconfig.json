@@ -12,6 +12,8 @@
       "@/app/*": ["./src/app/*"],
       "@/component/*": ["./src/component/*"],
       "@/lib/*": ["./src/lib/*"],
+      "@/util/*": ["./src/util/*"],
+      "@/locale/*": ["./src/locale/*"],
       "@/const/*": ["../shared/const/*"]
     }
   },
