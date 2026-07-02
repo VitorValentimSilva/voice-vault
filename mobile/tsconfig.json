@@ -14,6 +14,7 @@
       "@/lib/*": ["./src/lib/*"],
       "@/util/*": ["./src/util/*"],
       "@/locale/*": ["./src/locale/*"],
+      "@/storage/*": ["./src/storage/*"],
       "@/const/*": ["../shared/const/*"]
     }
   },
