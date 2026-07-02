@@ -29,6 +29,8 @@
     "plugins": [
       "@clerk/expo",
       "expo-web-browser",
+      "expo-notifications",
+      "expo-localization",
       "expo-router",
       [
         "@sentry/react-native/expo",
