@@ -13,9 +13,10 @@
       "@/component/*": ["./src/component/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/util/*": ["./src/util/*"],
-      "@/locale/*": ["./src/locale/*"],
       "@/storage/*": ["./src/storage/*"],
-      "@/const/*": ["../shared/const/*"]
+      "@/error/*": ["../shared/error/*"],
+      "@/const/*": ["../shared/const/*"],
+      "@/locale/*": ["../shared/locale/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts", "nativewind-env.d.ts"]
