@@ -10,7 +10,6 @@ import { setupPosthog } from '@/bootstrap/posthog.bootstrap';
 import { setupSwagger } from '@/bootstrap/swagger.bootstrap';
 import { AppConfigModule } from '@/config/config.module';
 import { AllExceptionsFilter } from '@/error/class/all-exception-filter.class';
-import { AppExceptionFilter } from '@/error/class/app-exception-filter.class';
 
 export async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppConfigModule, {
@@ -38,7 +37,7 @@ export async function bootstrap(): Promise<void> {
 
   const logger = app.get(Logger);
 
-  app.useGlobalFilters(new AllExceptionsFilter(logger), new AppExceptionFilter(logger));
+  app.useGlobalFilters(new AllExceptionsFilter(logger));
 
   setupPosthog(app);
   setupSwagger(app);
