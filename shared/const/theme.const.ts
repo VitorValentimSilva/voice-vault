@@ -247,6 +247,8 @@ export const NAV_THEME = {
   },
 };
 
+export type ThemeColorKey = Exclude<keyof typeof THEME.light, 'logo' | 'gradients'>;
+
 export type GradientKey = keyof typeof THEME.light.gradients;
 
 export type ThemePreference = 'system' | 'light' | 'dark';
