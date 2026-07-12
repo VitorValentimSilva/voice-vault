@@ -23,7 +23,8 @@
       "@/enum/*": ["./shared/enum/*"],
       "@/error/*": ["./shared/error/*"],
       "@/const/*": ["./shared/const/*"],
-      "@/dto/*": ["./shared/dto/*"]
+      "@/dto/*": ["./shared/dto/*"],
+      "@/locale/*": ["./shared/locale/*"]
     }
   },
   "include": ["shared/**/*.ts"]
