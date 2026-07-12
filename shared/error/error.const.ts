@@ -18,8 +18,12 @@ export const ERROR_METADATA: Record<ErrorCode, { status: number; severity: Error
   ZOD_ERROR_NOT_FOUND: { status: 404, severity: ErrorSeverity.LOW },
 
   // * CLERK:
-  CLERK_WEBHOOK_MISSING_RAW_BODY: { status: 400, severity: ErrorSeverity.LOW },
-  CLERK_WEBHOOK_MISSING_SVIX_HEADERS: { status: 400, severity: ErrorSeverity.LOW },
-  CLERK_WEBHOOK_INVALID_SIGNATURE: { status: 400, severity: ErrorSeverity.LOW },
-  CLERK_WEBHOOK_INVALID_PAYLOAD: { status: 400, severity: ErrorSeverity.LOW },
+  CLERK_MISSING_RAW_BODY: { status: 400, severity: ErrorSeverity.LOW },
+  CLERK_MISSING_SVIX_HEADERS: { status: 400, severity: ErrorSeverity.LOW },
+  CLERK_INVALID_SIGNATURE: { status: 400, severity: ErrorSeverity.LOW },
+  CLERK_INVALID_PAYLOAD: { status: 400, severity: ErrorSeverity.LOW },
+
+  // * LIBS:
+  LIBS_I18N_EXPO_EAS_PROJECT_ID_MISSING: { status: 500, severity: ErrorSeverity.HIGH },
+  LIBS_API_BASE_URL_MISSING: { status: 500, severity: ErrorSeverity.HIGH },
 };
