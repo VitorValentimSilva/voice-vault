@@ -6,7 +6,7 @@ import {
   FALLBACK_LANGUAGE,
   type LanguagePreference,
 } from '@/const/language.const';
-import { DEFAULT_NAMESPACE, RESOURCES } from '@/locale';
+import { DEFAULT_NAMESPACE, RESOURCES } from '@/locale/index';
 import { resolveEffectiveLanguage } from '@/util/language';
 import { getPersistedPreferences } from '@/util/storage';
 
@@ -28,7 +28,7 @@ void i18n.use(initReactI18next).init({
   lng: initialLanguage,
   fallbackLng: FALLBACK_LANGUAGE,
   defaultNS: DEFAULT_NAMESPACE,
-  ns: [DEFAULT_NAMESPACE],
+  ns: Object.keys(RESOURCES['en-US']),
   interpolation: {
     escapeValue: false,
   },
