@@ -31,6 +31,7 @@
       "expo-web-browser",
       "expo-notifications",
       "expo-localization",
+      "expo-status-bar",
       "expo-router",
       [
         "@sentry/react-native/expo",
@@ -38,6 +39,15 @@
           "url": "https://sentry.io/",
           "project": "react-native",
           "organization": "vitorvalem"
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0d0b1a",
+          "image": "",
+          "imageWidth": 94,
+          "resizeMode": "contain"
         }
       ],
       [
