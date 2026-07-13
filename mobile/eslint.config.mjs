@@ -1,3 +1,4 @@
+import { fixupConfigRules } from '@eslint/compat';
 import expoConfig from 'eslint-config-expo/flat.js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
@@ -5,26 +6,34 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const restrictedExpoConfig = expoConfig.map((config) => ({
-  ...config,
-  files: ['src/**/*.{ts,tsx,js,jsx}', 'app/**/*.{ts,tsx,js,jsx}'],
-}));
+const fixedExpoConfig = fixupConfigRules(expoConfig).map((config) => {
+  if (config.plugins && config.plugins['@typescript-eslint']) {
+    const newPlugins = { ...config.plugins };
+
+    delete newPlugins['@typescript-eslint'];
+
+    return { ...config, plugins: newPlugins };
+  }
+  return config;
+});
 
 export default tseslint.config(
   {
-    ignores: ['node_modules/**', '.expo/**', 'dist/**', 'coverage/**', 'app.config.ts'],
+    ignores: [
+      'node_modules/**',
+      '.expo/**',
+      'dist/**',
+      'coverage/**',
+      '*.config.js',
+      '*.config.mjs',
+      '*.config.ts',
+    ],
   },
-  ...restrictedExpoConfig,
+  ...fixedExpoConfig,
+  ...tseslint.configs.recommendedTypeChecked,
   eslintPluginPrettierRecommended,
   {
-    files: ['eslint.config.mjs'],
-    rules: {
-      'import/no-named-as-default-member': 'off',
-    },
-  },
-  {
     files: ['**/*.{ts,tsx}'],
-    extends: [...tseslint.configs.recommendedTypeChecked],
     languageOptions: {
       sourceType: 'module',
       parserOptions: {
@@ -38,6 +47,13 @@ export default tseslint.config(
     settings: {
       react: {
         version: 'detect',
+      },
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+        node: true,
       },
     },
     plugins: {
@@ -62,6 +78,7 @@ export default tseslint.config(
   },
   {
     files: ['**/*.{js,cjs,mjs}'],
+    extends: [tseslint.configs.disableTypeChecked],
     languageOptions: {
       sourceType: 'module',
       globals: {
