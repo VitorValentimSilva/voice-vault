@@ -1,4 +1,6 @@
 const error = {
+  errorMessage: 'Error message',
+  unknownError: 'Unexpected error. Please try again later.',
   fallback: {
     title: 'Unexpected error',
     description: 'Something went wrong and the app could not finish this action.',

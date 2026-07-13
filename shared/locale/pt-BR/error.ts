@@ -1,4 +1,6 @@
 const error = {
+  errorMessage: 'Mensagem de erro',
+  unknownError: 'Erro desconhecido. Tente novamente em breve.',
   fallback: {
     title: 'Erro inesperado',
     description: 'Algo deu errado e o app não conseguiu concluir esta ação.',
