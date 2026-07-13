@@ -5,11 +5,16 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+const restrictedExpoConfig = expoConfig.map((config) => ({
+  ...config,
+  files: ['src/**/*.{ts,tsx,js,jsx}', 'app/**/*.{ts,tsx,js,jsx}'],
+}));
+
 export default tseslint.config(
   {
-    ignores: ['node_modules/**', '.expo/**', 'dist/**', 'coverage/**'],
+    ignores: ['node_modules/**', '.expo/**', 'dist/**', 'coverage/**', 'app.config.ts'],
   },
-  ...expoConfig,
+  ...restrictedExpoConfig,
   eslintPluginPrettierRecommended,
   {
     files: ['eslint.config.mjs'],
