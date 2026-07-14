@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 import { DEFAULT_LANGUAGE_PREFERENCE, LanguagePreference } from '@/const/language.const';
 import { APP_PREFERENCES_STORAGE_KEY, PersistedPreferencesEnvelope } from '@/const/storage.const';
 import { DEFAULT_THEME_PREFERENCE, ThemePreference } from '@/const/theme.const';
@@ -7,6 +9,13 @@ export function getPersistedPreferences(): {
   languagePreference: LanguagePreference;
   themePreference: ThemePreference;
 } {
+  if (Platform.OS === 'web' && typeof window === 'undefined') {
+    return {
+      languagePreference: DEFAULT_LANGUAGE_PREFERENCE,
+      themePreference: DEFAULT_THEME_PREFERENCE,
+    };
+  }
+
   const raw = storage.getString(APP_PREFERENCES_STORAGE_KEY);
 
   if (!raw) {
