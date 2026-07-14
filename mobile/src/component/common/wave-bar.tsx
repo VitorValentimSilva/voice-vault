@@ -68,8 +68,8 @@ export default function WaveBar({ colors, delayMs, peakHeight = 34 }: WaveBarPro
       <LinearGradient
         className="h-full w-full rounded-full"
         colors={colors}
-        start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
+        start={{ x: 0, y: 0 }}
       />
     </Animated.View>
   );

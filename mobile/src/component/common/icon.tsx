@@ -54,8 +54,8 @@ export function Icon({
   if (LucideIcon) {
     return (
       <LucideIcon
-        size={size}
         color={color ?? currentTheme.foreground}
+        size={size}
         strokeWidth={strokeWidth ?? 2}
       />
     );
@@ -63,31 +63,31 @@ export function Icon({
 
   return (
     <Animated.View
+      accessibilityLabel={decorative ? undefined : (accessibilityLabel ?? 'Voice Vault')}
+      accessibilityRole={decorative ? undefined : 'image'}
+      accessible={!decorative}
       className="mb-5"
       entering={FadeIn.duration(700).delay(100)}
       style={iconStyle}
-      accessible={!decorative}
-      accessibilityRole={decorative ? undefined : 'image'}
-      accessibilityLabel={decorative ? undefined : (accessibilityLabel ?? 'Voice Vault')}
       {...(decorative
         ? {
             accessibilityElementsHidden: true,
             importantForAccessibility: 'no-hide-descendants' as const,
           }
         : {})}>
-      <Svg width={size} height={size} viewBox="0 0 120 120">
+      <Svg height={size} viewBox="0 0 120 120" width={size}>
         <Defs>
           <ClipPath id={`${uniqueId}-clip`}>
-            <Rect width="120" height="120" rx="28" />
+            <Rect height="120" rx="28" width="120" />
           </ClipPath>
 
-          <LinearGradient id={bgGradientId} x1="0" y1="0" x2="1" y2="1">
+          <LinearGradient id={bgGradientId} x1="0" x2="1" y1="0" y2="1">
             <Stop offset="0%" stopColor={currentTheme.logo.bgStart} />
 
             <Stop offset="100%" stopColor={currentTheme.logo.bgEnd} />
           </LinearGradient>
 
-          <LinearGradient id={waveGradientId} x1="0" y1="0" x2="1" y2="0">
+          <LinearGradient id={waveGradientId} x1="0" x2="1" y1="0" y2="0">
             <Stop offset="0%" stopColor={currentTheme.logo.waveStart} />
 
             <Stop offset="100%" stopColor={currentTheme.logo.waveEnd} />
@@ -95,24 +95,25 @@ export function Icon({
         </Defs>
 
         <G clipPath={`url(#${uniqueId}-clip)`}>
-          <Rect width="120" height="120" rx="28" fill={`url(#${bgGradientId})`} />
+          <Rect fill={`url(#${bgGradientId})`} height="120" rx="28" width="120" />
 
-          <Ellipse cx="30" cy="22" rx="42" ry="30" fill={currentTheme.logo.ellipseFill} />
+          <Ellipse cx="30" cy="22" fill={currentTheme.logo.ellipseFill} rx="42" ry="30" />
 
-          <Ellipse cx="60" cy="50" rx="34" ry="34" fill="rgba(255,255,255,0.04)" />
+          <Ellipse cx="60" cy="50" fill="rgba(255,255,255,0.04)" rx="34" ry="34" />
 
           <Rect
-            x="42"
-            y="24"
-            width="36"
+            fill={currentTheme.logo.shieldFill}
             height="44"
             rx="18"
-            fill={currentTheme.logo.shieldFill}
             stroke={currentTheme.logo.shieldStroke}
             strokeWidth="2"
+            width="36"
+            x="42"
+            y="24"
           />
 
           <Polyline
+            fill="none"
             points="
               48,47
               53,47
@@ -122,33 +123,32 @@ export function Icon({
               69,52
               73,47
             "
-            fill="none"
             stroke={`url(#${waveGradientId})`}
-            strokeWidth="3.5"
             strokeLinecap="round"
             strokeLinejoin="round"
+            strokeWidth="3.5"
           />
 
           <Path
             d="M60 68 L60 82"
             stroke={currentTheme.logo.shieldStroke}
-            strokeWidth="3"
             strokeLinecap="round"
+            strokeWidth="3"
           />
 
           <Path
             d="M48 88 H72"
             stroke={currentTheme.logo.shieldStroke}
-            strokeWidth="3"
             strokeLinecap="round"
+            strokeWidth="3"
           />
 
           <Path
             d="M38 62 C38 78 48 86 60 86 C72 86 82 78 82 62"
             fill="none"
+            opacity="0.7"
             stroke={currentTheme.logo.shieldStroke}
             strokeWidth="2"
-            opacity="0.7"
           />
         </G>
       </Svg>

@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 const textVariants = cva(
   cn(
-    'text-foreground text-base',
+    'text-base text-foreground',
     Platform.select({
       web: 'select-text',
     })
@@ -21,7 +21,7 @@ const textVariants = cva(
           Platform.select({ web: 'scroll-m-20 text-balance' })
         ),
         h2: cn(
-          'border-border border-b pb-2 text-3xl font-semibold tracking-tight',
+          'border-b border-border pb-2 text-3xl font-semibold tracking-tight',
           Platform.select({ web: 'scroll-m-20 first:mt-0' })
         ),
         h3: cn('text-2xl font-semibold tracking-tight', Platform.select({ web: 'scroll-m-20' })),
@@ -29,12 +29,12 @@ const textVariants = cva(
         p: 'mt-3 leading-7 sm:mt-6',
         blockquote: 'mt-4 border-l-2 pl-3 italic sm:mt-6 sm:pl-6',
         code: cn(
-          'bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold'
+          'relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold'
         ),
-        lead: 'text-muted-foreground text-xl',
+        lead: 'text-xl text-muted-foreground',
         large: 'text-lg font-semibold',
-        small: 'text-sm leading-none font-medium',
-        muted: 'text-muted-foreground text-sm',
+        small: 'text-sm font-medium leading-none',
+        muted: 'text-sm text-muted-foreground',
       },
     },
     defaultVariants: {
@@ -84,9 +84,9 @@ function Text({
   const Component = asChild ? Slot : RNText;
   return (
     <Component
+      aria-level={variant ? ARIA_LEVEL[variant] : undefined}
       className={cn(textVariants({ variant }), textClass, className)}
       role={variant ? ROLE[variant] : undefined}
-      aria-level={variant ? ARIA_LEVEL[variant] : undefined}
       {...props}
     />
   );

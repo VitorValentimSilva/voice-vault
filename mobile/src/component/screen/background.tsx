@@ -88,10 +88,10 @@ export function Background({
     <>
       {(haveGlow || haveParticles) && (
         <Animated.View
-          pointerEvents="none"
           accessibilityElementsHidden
+          className="absolute inset-0"
           importantForAccessibility="no-hide-descendants"
-          className="absolute inset-0">
+          pointerEvents="none">
           {haveGlow && (
             <Animated.View
               className="absolute top-1/2 self-center rounded-full"
@@ -118,8 +118,8 @@ export function Background({
         <LinearGradient
           className="flex-1 px-6"
           colors={currentTheme.gradients[gradient]}
-          start={{ x: 0.1, y: 0 }}
           end={{ x: 0.9, y: 1 }}
+          start={{ x: 0.1, y: 0 }}
           style={contentStyle}>
           {overlay}
         </LinearGradient>

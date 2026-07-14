@@ -50,9 +50,9 @@ export function Particle({ color, size, top, left, delayMs, travelY }: ParticleP
 
   return (
     <Animated.View
-      pointerEvents="none"
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
+      pointerEvents="none"
       style={[
         {
           position: 'absolute',
