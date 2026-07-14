@@ -5,6 +5,10 @@ const error = {
     title: 'Erro inesperado',
     description: 'Algo deu errado e o app não conseguiu concluir esta ação.',
   },
+  clerk: {
+    missingPublishableKey:
+      'Chave publicável do Clerk em falta. Por favor, verifique suas variáveis de ambiente.',
+  },
   codes: {
     // * REDIS:
     REDIS_INVALID_TTL_DURATION: {

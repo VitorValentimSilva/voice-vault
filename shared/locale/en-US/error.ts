@@ -5,6 +5,10 @@ const error = {
     title: 'Unexpected error',
     description: 'Something went wrong and the app could not finish this action.',
   },
+  clerk: {
+    missingPublishableKey:
+      'Missing Clerk publishable key. Please check your environment variables.',
+  },
   codes: {
     // * REDIS:
     REDIS_INVALID_TTL_DURATION: {
