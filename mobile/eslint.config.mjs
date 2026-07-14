@@ -3,6 +3,7 @@ import expoConfig from 'eslint-config-expo/flat.js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
+import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -72,6 +73,18 @@ export default tseslint.config(
         'error',
         {
           trailingComma: 'es5',
+        },
+      ],
+      ...reactPlugin.configs.recommended.rules,
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/jsx-sort-props': [
+        'warn',
+        {
+          callbacksLast: true,
+          shorthandFirst: true,
+          noSortAlphabetically: false,
+          reservedFirst: true,
         },
       ],
     },
