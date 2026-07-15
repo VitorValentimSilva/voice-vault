@@ -81,15 +81,15 @@ export function onSocialLoginPress(
 ) {
   return () => {
     void (async () => {
-      posthog.capture('social_login_clicked', {
-        strategy,
-      });
-
       Logger.debug({
         message: 'Social login started.',
         data: {
           strategy,
         },
+      });
+
+      posthog.capture('social_login_clicked', {
+        strategy,
       });
 
       try {

@@ -11,65 +11,19 @@ import { Label } from '@/component/ui/label';
 import { Separator } from '@/component/ui/separator';
 import { Text } from '@/component/ui/text';
 import { cn } from '@/lib/utils';
+import { onEmailSubmitEditing, onSubmit } from '@/util/component/auth/sign-up-form';
 
 export function SignUpForm() {
   const { signUp, fetchStatus } = useSignUp();
 
-  const passwordInputRef = useRef<TextInput>(null);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [error, setError] = useState<{
     email?: string;
     password?: string;
   }>({});
 
-  async function onSubmit() {
-    if (fetchStatus === 'fetching') {
-      return;
-    }
-
-    try {
-      const { error: signUpError } = await signUp.password({
-        emailAddress: email,
-        password,
-      });
-
-      if (signUpError) {
-        const message = signUpError.longMessage ?? signUpError.message;
-
-        const isEmailError =
-          message.toLowerCase().includes('email') || message.toLowerCase().includes('identifier');
-
-        setError(isEmailError ? { email: message } : { password: message });
-
-        return;
-      }
-
-      const { error: verificationError } = await signUp.verifications.sendEmailCode();
-
-      if (verificationError) {
-        setError({
-          email: verificationError.longMessage ?? verificationError.message,
-        });
-
-        return;
-      }
-
-      router.push('/(auth)/verify-email');
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Something went wrong';
-
-      setError({
-        email: message,
-      });
-    }
-  }
-
-  function onEmailSubmitEditing() {
-    passwordInputRef.current?.focus();
-  }
+  const passwordInputRef = useRef<TextInput>(null);
 
   return (
     <View className="gap-6">
@@ -96,7 +50,7 @@ export function SignUpForm() {
                 returnKeyType="next"
                 value={email}
                 onChangeText={setEmail}
-                onSubmitEditing={onEmailSubmitEditing}
+                onSubmitEditing={() => onEmailSubmitEditing(passwordInputRef)}
               />
 
               {error.email ? <Text className="text-sm text-destructive">{error.email}</Text> : null}
@@ -112,7 +66,9 @@ export function SignUpForm() {
                 returnKeyType="send"
                 value={password}
                 onChangeText={setPassword}
-                onSubmitEditing={() => void onSubmit()}
+                onSubmitEditing={() =>
+                  void onSubmit(fetchStatus, signUp, email, password, setError)
+                }
               />
 
               {error.password ? (
@@ -122,7 +78,7 @@ export function SignUpForm() {
 
             <Button
               className={cn('w-full', fetchStatus === 'fetching' && 'opacity-50')}
-              onPress={() => void onSubmit()}>
+              onPress={() => void onSubmit(fetchStatus, signUp, email, password, setError)}>
               <Text>Continue</Text>
             </Button>
           </View>
@@ -136,7 +92,9 @@ export function SignUpForm() {
 
           <View className="flex-row items-center">
             <Separator className="flex-1" />
+
             <Text className="px-4 text-sm text-muted-foreground">or</Text>
+
             <Separator className="flex-1" />
           </View>
 
