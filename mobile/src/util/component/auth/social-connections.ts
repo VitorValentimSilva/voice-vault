@@ -81,15 +81,19 @@ export function onSocialLoginPress(
 ) {
   return () => {
     void (async () => {
+      const provider = strategy.replace('oauth_', '');
+
       Logger.debug({
         message: 'Social login started.',
         data: {
           strategy,
+          provider,
         },
       });
 
-      posthog.capture('social_login_clicked', {
-        strategy,
+      posthog.capture('social_login_started', {
+        provider,
+        platform: 'mobile',
       });
 
       try {
@@ -105,7 +109,14 @@ export function onSocialLoginPress(
             message: 'Social login completed without active session.',
             data: {
               strategy,
+              provider,
             },
+          });
+
+          posthog.capture('social_login_failed', {
+            provider,
+            platform: 'mobile',
+            reason: 'missing_session',
           });
 
           return;
@@ -119,11 +130,13 @@ export function onSocialLoginPress(
           message: 'Social login successful.',
           data: {
             strategy,
+            provider,
           },
         });
 
         posthog.capture('social_login_success', {
-          strategy,
+          provider,
+          platform: 'mobile',
         });
       } catch (error) {
         Logger.exception({
@@ -137,8 +150,9 @@ export function onSocialLoginPress(
         });
 
         posthog.capture('social_login_failed', {
-          strategy,
-          error: error instanceof Error ? error.message : 'Unknown error',
+          provider,
+          platform: 'mobile',
+          reason: 'exception',
         });
       }
     })();

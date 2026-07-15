@@ -1,5 +1,6 @@
 import { useSignUp } from '@clerk/expo';
-import { useCallback, useEffect, useState } from 'react';
+import { router } from 'expo-router';
+import { useState } from 'react';
 import { TextStyle, View } from 'react-native';
 
 import { Button } from '@/component/ui/button';
@@ -8,6 +9,7 @@ import { Input } from '@/component/ui/input';
 import { Label } from '@/component/ui/label';
 import { Text } from '@/component/ui/text';
 import { cn } from '@/lib/utils';
+import { onResendCode, onSubmit, useCountdown } from '@/util/component/auth/verify-email-form';
 
 const RESEND_CODE_INTERVAL_SECONDS = 30;
 
@@ -15,57 +17,17 @@ const TABULAR_NUMBERS_STYLE: TextStyle = { fontVariant: ['tabular-nums'] };
 
 export function VerifyEmailForm() {
   const { signUp, fetchStatus } = useSignUp();
+
+  const [countdown, setCountdown] = useState(RESEND_CODE_INTERVAL_SECONDS);
+
+  const { countdown: countdownRemaining, restartCountdown } = useCountdown(
+    countdown,
+    setCountdown,
+    RESEND_CODE_INTERVAL_SECONDS
+  );
+
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
-  const { countdown, restartCountdown } = useCountdown(RESEND_CODE_INTERVAL_SECONDS);
-
-  async function onSubmit() {
-    if (fetchStatus === 'fetching') {
-      return;
-    }
-
-    try {
-      const { error: verifyCodeError } = await signUp.verifications.verifyEmailCode({
-        code,
-      });
-
-      if (verifyCodeError) {
-        setError(verifyCodeError.longMessage ?? verifyCodeError.message);
-
-        return;
-      }
-
-      if (signUp.status === 'complete') {
-        await signUp.finalize();
-
-        return;
-      }
-      // TODO: Handle other statuses
-      console.error(JSON.stringify(signUp, null, 2));
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong');
-    }
-  }
-
-  async function onResendCode() {
-    if (fetchStatus === 'fetching') {
-      return;
-    }
-
-    try {
-      const { error: sendCodeError } = await signUp.verifications.sendEmailCode();
-
-      if (sendCodeError) {
-        setError(sendCodeError.longMessage ?? sendCodeError.message);
-
-        return;
-      }
-
-      restartCountdown();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong');
-    }
-  }
 
   return (
     <View className="gap-6">
@@ -91,7 +53,7 @@ export function VerifyEmailForm() {
                 returnKeyType="send"
                 textContentType="oneTimeCode"
                 onChangeText={setCode}
-                onSubmitEditing={() => void onSubmit()}
+                onSubmitEditing={() => void onSubmit(fetchStatus, signUp, code, setError)}
               />
 
               {!error ? null : (
@@ -99,15 +61,15 @@ export function VerifyEmailForm() {
               )}
 
               <Button
-                disabled={countdown > 0}
+                disabled={countdownRemaining > 0}
                 size="sm"
                 variant="link"
-                onPress={() => void onResendCode()}>
+                onPress={() => void onResendCode(fetchStatus, signUp, setError, restartCountdown)}>
                 <Text className="text-center text-xs">
                   Didn&apos;t receive the code? Resend{' '}
-                  {countdown > 0 ? (
+                  {countdownRemaining > 0 ? (
                     <Text className="text-xs" style={TABULAR_NUMBERS_STYLE}>
-                      ({countdown})
+                      ({countdownRemaining})
                     </Text>
                   ) : null}
                 </Text>
@@ -117,16 +79,14 @@ export function VerifyEmailForm() {
             <View className="gap-3">
               <Button
                 className={cn('w-full', fetchStatus === 'fetching' && 'opacity-50')}
-                onPress={() => void onSubmit()}>
+                onPress={() => void onSubmit(fetchStatus, signUp, code, setError)}>
                 <Text>Continue</Text>
               </Button>
 
               <Button
                 className="mx-auto"
                 variant="link"
-                onPress={() => {
-                  // TODO: Navigate to sign up screen
-                }}>
+                onPress={() => router.push('/(auth)/sign-up')}>
                 <Text>Cancel</Text>
               </Button>
             </View>
@@ -135,32 +95,4 @@ export function VerifyEmailForm() {
       </Card>
     </View>
   );
-}
-
-function useCountdown(seconds = 30) {
-  const [countdown, setCountdown] = useState(seconds);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          return 0;
-        }
-
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [seconds]);
-
-  const restartCountdown = useCallback(() => {
-    setCountdown(seconds);
-  }, [seconds]);
-
-  return {
-    countdown,
-    restartCountdown,
-  };
 }
