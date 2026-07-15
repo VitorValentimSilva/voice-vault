@@ -21,9 +21,13 @@ export function useRevenueCatInit() {
 
         const isConfigured = await Purchases.isConfigured();
 
-        if (!isConfigured) {
-          Purchases.configure({ apiKey });
+        if (isConfigured) {
+          return;
         }
+
+        Purchases.configure({
+          apiKey,
+        });
       } catch (error) {
         console.error('Failed to initialize RevenueCat:', error);
       }
