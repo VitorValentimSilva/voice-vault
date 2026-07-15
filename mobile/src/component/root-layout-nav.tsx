@@ -7,6 +7,7 @@ import { PostHogProvider } from 'posthog-react-native';
 import SplashScreen from '@/app/splash';
 import { useAppBootstrap } from '@/bootstrap/use-app-bootstrap';
 import { useNotificationsInit } from '@/bootstrap/use-notifications-init';
+import { useRevenueCatAuth } from '@/bootstrap/use-revenuecat-auth';
 import { useRevenueCatInit } from '@/bootstrap/use-revenuecat-init';
 import { useScreenTracking } from '@/bootstrap/use-screen-tracking';
 import { posthog } from '@/lib/posthog';
@@ -20,6 +21,7 @@ export function RootLayoutNav() {
   const isReady = useAppBootstrap();
 
   useRevenueCatInit();
+  useRevenueCatAuth();
   useNotificationsInit();
   useScreenTracking();
 
