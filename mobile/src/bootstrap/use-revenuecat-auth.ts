@@ -1,8 +1,8 @@
 import { useUser } from '@clerk/expo';
-import * as Sentry from '@sentry/react-native';
 import { useEffect } from 'react';
 import Purchases from 'react-native-purchases';
 
+import Logger from '@/lib/logger';
 import { posthog } from '@/lib/posthog';
 
 export function useRevenueCatAuth() {
@@ -20,6 +20,10 @@ export function useRevenueCatAuth() {
         if (!isSignedIn || !user) {
           await Purchases.logOut();
 
+          Logger.info({
+            message: 'RevenueCat user logged out.',
+          });
+
           posthog.capture('revenuecat_logout');
 
           return;
@@ -30,27 +34,44 @@ export function useRevenueCatAuth() {
         const currentUserId = await Purchases.getAppUserID();
 
         if (currentUserId === userId) {
+          Logger.debug({
+            message: 'RevenueCat user already synchronized.',
+            data: {
+              clerkUserId: userId,
+            },
+          });
+
           return;
         }
 
         await Purchases.logIn(userId);
 
+        Logger.info({
+          message: 'RevenueCat user synchronized.',
+          data: {
+            clerkUserId: userId,
+          },
+        });
+
         posthog.capture('revenuecat_login', {
           clerkUserId: userId,
         });
-      } catch (err) {
-        const error = err instanceof Error ? err : new Error(String(err));
-
-        Sentry.captureException(error, {
+      } catch (error) {
+        Logger.exception({
+          message: 'Failed to synchronize RevenueCat user.',
+          error,
           tags: {
-            context: 'revenuecat_auth_sync',
+            feature: 'revenuecat',
+            action: 'user_sync',
+          },
+          extra: {
             clerkUserId: userId,
           },
         });
 
         posthog.capture('revenuecat_login_failed', {
-          clerkUserId: userId ?? null,
-          error: error.message,
+          clerkUserId: userId,
+          error: error instanceof Error ? error.message : 'Unknown error',
         });
       }
     }

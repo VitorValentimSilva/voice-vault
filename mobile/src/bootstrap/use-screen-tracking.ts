@@ -1,6 +1,7 @@
 import { useGlobalSearchParams, usePathname } from 'expo-router';
 import { useEffect, useRef } from 'react';
 
+import Logger from '@/lib/logger';
 import { posthog } from '@/lib/posthog';
 
 const SENSITIVE_PARAMS = new Set(['token', 'password', 'secret', 'code']);
@@ -16,7 +17,7 @@ function sanitizeParams(params: Record<string, unknown>) {
     }
 
     if (Array.isArray(value)) {
-      const sanitizedValues = value.filter(isPrimitiveParam).map((item) => String(item));
+      const sanitizedValues = value.filter(isPrimitiveParam).map(String);
 
       if (sanitizedValues.length > 0) {
         acc[key] = sanitizedValues;
@@ -58,9 +59,27 @@ export function useScreenTracking() {
 
         await posthog.screen(pathname, screenProperties);
 
+        Logger.debug({
+          message: 'Screen tracked.',
+          data: {
+            pathname,
+            previousScreen: previousPathname.current,
+          },
+        });
+
         previousPathname.current = pathname;
       } catch (error) {
-        console.error('Failed to track screen view:', error);
+        Logger.exception({
+          message: 'Failed to track screen view.',
+          error,
+          tags: {
+            feature: 'analytics',
+            action: 'screen_tracking',
+          },
+          extra: {
+            pathname,
+          },
+        });
       }
     };
 

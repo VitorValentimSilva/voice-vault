@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { Platform } from 'react-native';
 import Purchases, { LOG_LEVEL } from 'react-native-purchases';
 
+import Logger from '@/lib/logger';
+
 export function useRevenueCatInit() {
   useEffect(() => {
-    const initializeRevenueCat = async () => {
+    async function initializeRevenueCat() {
       try {
         const logLevel = __DEV__ ? LOG_LEVEL.VERBOSE : LOG_LEVEL.ERROR;
 
@@ -16,22 +18,50 @@ export function useRevenueCatInit() {
             : process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_KEY;
 
         if (!apiKey) {
+          Logger.warn({
+            message: 'RevenueCat API key is missing.',
+            data: {
+              platform: Platform.OS,
+            },
+          });
+
           return;
         }
 
         const isConfigured = await Purchases.isConfigured();
 
         if (isConfigured) {
+          Logger.debug({
+            message: 'RevenueCat already configured.',
+          });
+
           return;
         }
 
         Purchases.configure({
           apiKey,
         });
+
+        Logger.info({
+          message: 'RevenueCat initialized.',
+          data: {
+            platform: Platform.OS,
+          },
+        });
       } catch (error) {
-        console.error('Failed to initialize RevenueCat:', error);
+        Logger.exception({
+          message: 'Failed to initialize RevenueCat.',
+          error,
+          tags: {
+            feature: 'revenuecat',
+            action: 'initialize',
+          },
+          extra: {
+            platform: Platform.OS,
+          },
+        });
       }
-    };
+    }
 
     void initializeRevenueCat();
   }, []);

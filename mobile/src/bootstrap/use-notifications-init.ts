@@ -1,7 +1,7 @@
-import * as Sentry from '@sentry/react-native';
 import * as Notifications from 'expo-notifications';
 import { useEffect } from 'react';
 
+import Logger from '@/lib/logger';
 import {
   configureNotificationChannel,
   getPushToken,
@@ -11,28 +11,34 @@ import {
 export function useNotificationsInit() {
   useEffect(() => {
     async function initNotifications() {
-      await configureNotificationChannel();
-
-      const granted = await requestNotificationPermission();
-
-      if (!granted) {
-        return;
-      }
-
       try {
+        await configureNotificationChannel();
+
+        const granted = await requestNotificationPermission();
+
+        if (!granted) {
+          Logger.info({
+            message: 'Push notification permission denied.',
+          });
+
+          return;
+        }
+
         const token = await getPushToken();
 
-        if (__DEV__) {
-          console.log('[Push] Token:', token);
-        }
+        Logger.debug({
+          message: 'Push token generated.',
+          data: {
+            token,
+          },
+        });
       } catch (error) {
-        if (__DEV__) {
-          console.warn('[Push] Failed to get token:', error);
-        }
-
-        Sentry.captureException(error, {
+        Logger.exception({
+          message: 'Failed to initialize push notifications.',
+          error,
           tags: {
-            area: 'push-notifications',
+            feature: 'notifications',
+            action: 'initialize',
           },
         });
       }
@@ -43,9 +49,12 @@ export function useNotificationsInit() {
 
   useEffect(() => {
     const subscription = Notifications.addNotificationResponseReceivedListener((notification) => {
-      if (__DEV__) {
-        console.log('[Notification]', notification);
-      }
+      Logger.debug({
+        message: 'Notification response received.',
+        data: {
+          notification,
+        },
+      });
     });
 
     return () => {
