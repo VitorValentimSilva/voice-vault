@@ -29,7 +29,8 @@
       "@/enum/*": ["../shared/enum/*"],
       "@/error/*": ["../shared/error/*"],
       "@/const/*": ["../shared/const/*"],
-      "@/dto/*": ["../shared/dto/*"]
+      "@/dto/*": ["../shared/dto/*"],
+      "@/locale/*": ["../shared/locale/*"]
     }
   },
   "include": ["src/**/*.ts", "test/**/*.ts", "prisma.config.ts", "../shared/**/*.ts"]
