@@ -57,7 +57,7 @@ export function SignUpForm() {
         return;
       }
 
-      router.push('/(auth)/c');
+      router.push('/(auth)/verify-email');
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went wrong';
 
