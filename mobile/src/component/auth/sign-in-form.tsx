@@ -112,9 +112,7 @@ export function SignInForm() {
                   className="ml-auto h-4 px-1 py-0 web:h-fit sm:h-4"
                   size="sm"
                   variant="link"
-                  onPress={() => {
-                    // TODO: Navigate to forgot password screen
-                  }}>
+                  onPress={() => router.push('/(auth)/forgot-password')}>
                   <Text className="font-normal leading-4">Forgot your password?</Text>
                 </Button>
               </View>
