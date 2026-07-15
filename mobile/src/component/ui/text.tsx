@@ -68,9 +68,9 @@ const ARIA_LEVEL: Partial<Record<TextVariant, string>> = {
   h4: '4',
 };
 
-const TextClassContext = createContext<string | undefined>(undefined);
+export const TextClassContext = createContext<string | undefined>(undefined);
 
-function Text({
+export function Text({
   className,
   asChild = false,
   variant = 'default',
@@ -82,6 +82,7 @@ function Text({
   }) {
   const textClass = useContext(TextClassContext);
   const Component = asChild ? Slot : RNText;
+
   return (
     <Component
       aria-level={variant ? ARIA_LEVEL[variant] : undefined}
@@ -91,5 +92,3 @@ function Text({
     />
   );
 }
-
-export { Text, TextClassContext };

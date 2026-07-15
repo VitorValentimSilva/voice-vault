@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 import { cn } from '@/lib/utils';
 
-function Label({
+export function Label({
   className,
   onPress,
   onLongPress,
@@ -38,5 +38,3 @@ function Label({
     </LabelPrimitive.Root>
   );
 }
-
-export { Label };

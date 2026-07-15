@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { Text, TextClassContext } from '@/component/ui/text';
 import { cn } from '@/lib/utils';
 
-function Card({ className, ...props }: ComponentProps<typeof View> & RefAttributes<View>) {
+export function Card({ className, ...props }: ComponentProps<typeof View> & RefAttributes<View>) {
   return (
     <TextClassContext.Provider value="text-card-foreground">
       <View
@@ -18,11 +18,14 @@ function Card({ className, ...props }: ComponentProps<typeof View> & RefAttribut
   );
 }
 
-function CardHeader({ className, ...props }: ComponentProps<typeof View> & RefAttributes<View>) {
+export function CardHeader({
+  className,
+  ...props
+}: ComponentProps<typeof View> & RefAttributes<View>) {
   return <View className={cn('flex flex-col gap-1.5 px-6', className)} {...props} />;
 }
 
-function CardTitle({
+export function CardTitle({
   className,
   ref,
   ...props
@@ -38,19 +41,23 @@ function CardTitle({
   );
 }
 
-function CardDescription({
+export function CardDescription({
   className,
   ...props
 }: ComponentProps<typeof Text> & RefAttributes<typeof Text>) {
   return <Text className={cn('text-sm text-muted-foreground', className)} {...props} />;
 }
 
-function CardContent({ className, ...props }: ComponentProps<typeof View> & RefAttributes<View>) {
+export function CardContent({
+  className,
+  ...props
+}: ComponentProps<typeof View> & RefAttributes<View>) {
   return <View className={cn('px-6', className)} {...props} />;
 }
 
-function CardFooter({ className, ...props }: ComponentProps<typeof View> & RefAttributes<View>) {
+export function CardFooter({
+  className,
+  ...props
+}: ComponentProps<typeof View> & RefAttributes<View>) {
   return <View className={cn('flex flex-row items-center px-6', className)} {...props} />;
 }
-
-export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };

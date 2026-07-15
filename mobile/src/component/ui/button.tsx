@@ -5,7 +5,7 @@ import { Platform, Pressable } from 'react-native';
 import { TextClassContext } from '@/component/ui/text';
 import { cn } from '@/lib/utils';
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
   cn(
     'group shrink-0 flex-row items-center justify-center gap-2 rounded-md shadow-none',
     Platform.select({
@@ -55,7 +55,7 @@ const buttonVariants = cva(
   }
 );
 
-const buttonTextVariants = cva(
+export const buttonTextVariants = cva(
   cn(
     'text-sm font-medium text-foreground',
     Platform.select({ web: 'pointer-events-none transition-colors' })
@@ -90,11 +90,11 @@ const buttonTextVariants = cva(
   }
 );
 
-type ButtonProps = ComponentProps<typeof Pressable> &
+export type ButtonProps = ComponentProps<typeof Pressable> &
   RefAttributes<typeof Pressable> &
   VariantProps<typeof buttonVariants>;
 
-function Button({ className, variant, size, ...props }: ButtonProps) {
+export function Button({ className, variant, size, ...props }: ButtonProps) {
   return (
     <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
       <Pressable
@@ -105,6 +105,3 @@ function Button({ className, variant, size, ...props }: ButtonProps) {
     </TextClassContext.Provider>
   );
 }
-
-export { Button, buttonTextVariants, buttonVariants };
-export type { ButtonProps };

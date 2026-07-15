@@ -3,7 +3,7 @@ import { Platform, TextInput } from 'react-native';
 
 import { cn } from '@/lib/utils';
 
-function Input({
+export function Input({
   className,
   ...props
 }: ComponentProps<typeof TextInput> & RefAttributes<TextInput>) {
@@ -30,5 +30,3 @@ function Input({
     />
   );
 }
-
-export { Input };
