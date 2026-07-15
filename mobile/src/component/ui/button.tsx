@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import { ComponentProps, RefAttributes } from 'react';
 import { Platform, Pressable } from 'react-native';
 
 import { TextClassContext } from '@/component/ui/text';
@@ -89,8 +90,8 @@ const buttonTextVariants = cva(
   }
 );
 
-type ButtonProps = React.ComponentProps<typeof Pressable> &
-  React.RefAttributes<typeof Pressable> &
+type ButtonProps = ComponentProps<typeof Pressable> &
+  RefAttributes<typeof Pressable> &
   VariantProps<typeof buttonVariants>;
 
 function Button({ className, variant, size, ...props }: ButtonProps) {
