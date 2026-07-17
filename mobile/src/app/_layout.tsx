@@ -1,8 +1,10 @@
 import '@/global.css';
+import '@/lib/observe';
 import '@/lib/sentry';
 
 import { ClerkProvider } from '@clerk/expo';
 import { tokenCache } from '@clerk/expo/token-cache';
+import { ObserveRoot } from 'expo-observe';
 import { useColorScheme } from 'nativewind';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
@@ -17,7 +19,7 @@ if (!publishableKey) {
   throw new Error(i18n.t('error:clerk.missingPublishableKey'));
 }
 
-export default function RootLayout() {
+function RootLayout() {
   const { colorScheme } = useColorScheme();
 
   const clerkProps = tokenCache
@@ -37,3 +39,5 @@ export default function RootLayout() {
     </GestureHandlerRootView>
   );
 }
+
+export default ObserveRoot.wrap(RootLayout);
