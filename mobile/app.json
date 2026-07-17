@@ -7,7 +7,7 @@
     "icon": "",
     "scheme": "voice-vault",
     "userInterfaceStyle": "automatic",
-    "assetBundlePatterns": ["assets/**/*"],
+    "assetBundlePatterns": ["asset/**/*"],
     "ios": {
       "icon": "",
       "bundleIdentifier": "com.vitorvalem.voicevault",
@@ -18,7 +18,8 @@
     },
     "android": {
       "package": "com.vitorvalem.voicevault",
-      "icon": "",
+      "googleServicesFile": "./google-services.json",
+      "icon": "./asset/voice-vault-favicon.png",
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -46,7 +47,7 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#0d0b1a",
-          "image": "",
+          "image": "./asset/voice-vault-favicon.png",
           "imageWidth": 94,
           "resizeMode": "contain"
         }
@@ -55,22 +56,22 @@
         "expo-font",
         {
           "fonts": [
-            "./assets/fonts/plus_jakarta_sans_extra_light.ttf",
-            "./assets/fonts/plus_jakarta_sans_extra_light_italic.ttf",
-            "./assets/fonts/plus_jakarta_sans_light.ttf",
-            "./assets/fonts/plus_jakarta_sans_light_italic.ttf",
-            "./assets/fonts/plus_jakarta_sans_regular.ttf",
-            "./assets/fonts/plus_jakarta_sans_italic.ttf",
-            "./assets/fonts/plus_jakarta_sans_medium.ttf",
-            "./assets/fonts/plus_jakarta_sans_medium_italic.ttf",
-            "./assets/fonts/plus_jakarta_sans_semi_bold.ttf",
-            "./assets/fonts/plus_jakarta_sans_semi_bold_italic.ttf",
-            "./assets/fonts/plus_jakarta_sans_bold.ttf",
-            "./assets/fonts/plus_jakarta_sans_bold_italic.ttf",
-            "./assets/fonts/plus_jakarta_sans_extra_bold.ttf",
-            "./assets/fonts/plus_jakarta_sans_extra_bold_italic.ttf",
-            "./assets/fonts/plus_jakarta_sans_black.ttf",
-            "./assets/fonts/plus_jakarta_sans_black_italic.ttf"
+            "./asset/font/plus_jakarta_sans_extra_light.ttf",
+            "./asset/font/plus_jakarta_sans_extra_light_italic.ttf",
+            "./asset/font/plus_jakarta_sans_light.ttf",
+            "./asset/font/plus_jakarta_sans_light_italic.ttf",
+            "./asset/font/plus_jakarta_sans_regular.ttf",
+            "./asset/font/plus_jakarta_sans_italic.ttf",
+            "./asset/font/plus_jakarta_sans_medium.ttf",
+            "./asset/font/plus_jakarta_sans_medium_italic.ttf",
+            "./asset/font/plus_jakarta_sans_semi_bold.ttf",
+            "./asset/font/plus_jakarta_sans_semi_bold_italic.ttf",
+            "./asset/font/plus_jakarta_sans_bold.ttf",
+            "./asset/font/plus_jakarta_sans_bold_italic.ttf",
+            "./asset/font/plus_jakarta_sans_extra_bold.ttf",
+            "./asset/font/plus_jakarta_sans_extra_bold_italic.ttf",
+            "./asset/font/plus_jakarta_sans_black.ttf",
+            "./asset/font/plus_jakarta_sans_black_italic.ttf"
           ]
         }
       ]
@@ -79,12 +80,6 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "fd37b3d6-2cd9-47b0-81da-4567dfa910c5"
-      }
-    },
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -92,6 +87,7 @@
       "enabled": true,
       "checkAutomatically": "ON_LOAD",
       "fallbackToCacheTimeout": 3000
-    }
+    },
+    "owner": "vitorvalem"
   }
 }
