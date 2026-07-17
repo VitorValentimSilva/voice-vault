@@ -18,14 +18,17 @@ export function useRevenueCatAuth() {
     async function syncRevenueCat() {
       try {
         if (!isSignedIn || !user) {
-          await Purchases.logOut();
+          const isAnonymous = await Purchases.isAnonymous();
 
-          Logger.info({
-            message: 'RevenueCat user logged out.',
-          });
+          if (!isAnonymous) {
+            await Purchases.logOut();
 
-          posthog.capture('revenuecat_logout');
+            Logger.info({
+              message: 'RevenueCat user logged out.',
+            });
 
+            posthog.capture('revenuecat_logout');
+          }
           return;
         }
 
