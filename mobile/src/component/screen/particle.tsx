@@ -51,16 +51,15 @@ export function Particle({ color, size, top, left, delayMs, travelY }: ParticleP
   return (
     <Animated.View
       accessibilityElementsHidden
+      className="absolute rounded-full"
       importantForAccessibility="no-hide-descendants"
       pointerEvents="none"
       style={[
         {
-          position: 'absolute',
           top: (top / 100) * SCREEN_H,
           left: (left / 100) * SCREEN_W,
           width: size,
           height: size,
-          borderRadius: size / 2,
           backgroundColor: color,
           shadowColor: color,
           shadowOffset: { width: 0, height: 0 },

@@ -1,4 +1,3 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import { SplashScreen } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import { ReactNode, useEffect } from 'react';
@@ -13,6 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { LinearGradient } from '@/component/screen/linear-gradient';
 import ParticleGroup from '@/component/screen/particle-group';
 import { GradientKey, THEME } from '@/const/theme.const';
 

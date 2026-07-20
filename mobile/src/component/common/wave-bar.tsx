@@ -53,11 +53,10 @@ export default function WaveBar({ colors, delayMs, peakHeight = 34 }: WaveBarPro
 
   return (
     <Animated.View
+      className="w-1.5 rounded-full"
       style={[
         barStyle,
         {
-          width: 6,
-          borderRadius: 999,
           shadowColor: colors[1],
           shadowOpacity: 0.22,
           shadowRadius: 8,
